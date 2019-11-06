@@ -3,7 +3,7 @@ import upperFirst from "lodash/upperFirst";
 import camelCase from "lodash/camelCase";
 import App from "./App.vue";
 import router from "./router";
-import store from "./store";
+import store from "./store/store";
 import Axios from "axios";
 
 Vue.config.productionTip = false;

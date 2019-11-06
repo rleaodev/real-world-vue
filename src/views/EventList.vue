@@ -1,8 +1,8 @@
 <template>
   <div>
-    <h1>Events Listing</h1>
-    <EventCard v-for="event in events" :key="event.id" :event="event" />
-    <template v-if="getTotalEvents > eventsPerPage">
+    <h1>Events Listing for - {{ user.user.name }}</h1>
+    <EventCard v-for="event in event.events" :key="event.id" :event="event" />
+    <template v-if="totalEvents > eventsPerPage">
       <router-link
         v-show="page > 1"
         :to="{ name: 'event-list', query: { page: page - 1 } }"
@@ -10,7 +10,7 @@
         >Prev</router-link
       >&nbsp;
       <router-link
-        v-show="getTotalEvents > eventsPerPage * page"
+        v-show="totalEvents > eventsPerPage * page"
         :to="{ name: 'event-list', query: { page: page + 1 } }"
         rel="prev"
         >Next</router-link
@@ -21,7 +21,7 @@
 
 <script>
 import EventCard from "@/components/EventCard.vue";
-import { mapState, mapGetters } from "vuex";
+import { mapState } from "vuex";
 
 export default {
   data() {
@@ -33,17 +33,19 @@ export default {
     EventCard
   },
   created() {
-    this.$store.dispatch("fetchEvents", {
+    this.$store.dispatch("event/fetchEvents", {
       perPage: this.eventsPerPage,
       page: this.page
     });
   },
   computed: {
-    ...mapState(["events"]),
+    ...mapState(["event", "user"]),
     page() {
       return parseInt(this.$route.query.page) || 1;
     },
-    ...mapGetters(["getTotalEvents"])
+    totalEvents() {
+      return this.event.totalEvents;
+    }
   }
 };
 </script>

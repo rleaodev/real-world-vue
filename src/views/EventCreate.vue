@@ -67,12 +67,12 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(["getEventById"]),
-    ...mapState(["user", "categories", "events"])
+    ...mapGetters(["event/getEventById"]),
+    ...mapState(["user", "categories"])
   },
   methods: {
     createFreshEventObject() {
-      const user = this.user;
+      const user = this.$store.state.user.user;
       const id = Math.floor(Math.random() * 10000000);
 
       return {
@@ -90,7 +90,7 @@ export default {
     },
     createEvent() {
       this.$store
-        .dispatch("createEvent", this.event)
+        .dispatch("event/createEvent", this.event)
         .then(() => {
           this.$router.push({
             name: "event-show",
