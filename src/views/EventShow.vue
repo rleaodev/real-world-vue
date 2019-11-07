@@ -14,37 +14,29 @@
     <p>{{ event.description }}</p>
     <h2>
       Attendees
-      <span class="badge -fill-gradient">
-        {{
+      <span class="badge -fill-gradient">{{
         event.attendees ? event.attendees.length : 0
-        }}
-      </span>
+      }}</span>
     </h2>
     <ul class="list-group">
-      <li v-for="(attendee, index) in event.attendees" :key="index" class="list-item">
+      <li
+        v-for="(attendee, index) in event.attendees"
+        :key="index"
+        class="list-item"
+      >
         <b>{{ attendee.name }}</b>
       </li>
     </ul>
   </div>
 </template>
 <script>
-import { mapState } from "vuex";
-import store from "@/store/store";
-import NProgess from "nprogress";
-
 export default {
-  props: ["id"],
-  beforeRouteEnter(to, from, next) {
-    NProgess.start();
-    store.dispatch("event/fetchEvent", to.params.id).then(() => {
-      NProgess.done();
-    });
-    next();
-  },
-
-  computed: mapState({
-    event: state => state.event.event
-  })
+  props: {
+    event: {
+      type: Object,
+      required: true
+    }
+  }
 };
 </script>
 <style scoped>
