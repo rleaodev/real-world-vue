@@ -9,19 +9,18 @@ const apiClient = axios.create({
   }
 });
 
-import NProgress from "nprogress";
+// import NProgress from "nprogress";
+// apiClient.interceptors.request.use(config => {
+//   console.log("foooo");
+//   NProgress.start();
+//   return config;
+// });
 
-apiClient.interceptors.request.use(config => {
-  console.log("foooo");
-  NProgress.start();
-  return config;
-});
-
-apiClient.interceptors.response.use(response => {
-  console.log("bar");
-  NProgress.done();
-  return response;
-});
+// apiClient.interceptors.response.use(response => {
+//   console.log("bar");
+//   NProgress.done();
+//   return response;
+// });
 
 export default {
   getEvents(perPage, page) {
