@@ -231,6 +231,24 @@
       "date": "",
       "time": "5:00",
       "attendees": []
+    },
+    {
+      "id": 2823388,
+      "user": {
+        "id": "abc12",
+        "name": "Rafael"
+      },
+      "category": "nature",
+      "organizer": {
+        "id": "abc12",
+        "name": "Rafael"
+      },
+      "title": "Puppy picnic",
+      "description": "Puppy",
+      "location": "",
+      "date": "",
+      "time": "",
+      "attendees": []
     }
   ]
 }
