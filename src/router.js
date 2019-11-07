@@ -45,6 +45,9 @@ Vue.use(Router);
     2. beforeRouteEnter
     3. afterEach
     4. beforeCreate | created
+
+
+    beforeEnter is called only when the components is created
     
 */
 
@@ -54,7 +57,8 @@ const router = new Router({
     {
       path: "/",
       name: "event-list",
-      component: EventList
+      component: EventList,
+      props: true
     },
     {
       path: "/event/:id",

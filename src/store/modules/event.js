@@ -10,7 +10,8 @@ export const state = {
   ],
   events: [],
   event: {},
-  totalEvents: 0
+  totalEvents: 0,
+  perPage: 3
 };
 
 export const mutations = {
@@ -49,8 +50,8 @@ export const actions = {
         dispatch("notification/add", notification, { root: true });
       });
   },
-  fetchEvents({ commit, dispatch }, { perPage, page }) {
-    EventService.getEvents(perPage, page)
+  fetchEvents({ commit, dispatch, state }, { page }) {
+    return EventService.getEvents(state.perPage, page)
       .then(response => {
         commit("SET_EVENTS", response.data);
         commit("SET_TOTAL_EVENTS", response.headers["x-total-count"] || 0);
