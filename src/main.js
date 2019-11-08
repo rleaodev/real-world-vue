@@ -4,8 +4,8 @@ import camelCase from "lodash/camelCase";
 import App from "./App.vue";
 import router from "./router";
 import store from "./store/store";
-import Axios from "axios";
 import "nprogress/nprogress.css";
+import Vuelidate from "vuelidate";
 
 Vue.config.productionTip = false;
 
@@ -25,8 +25,7 @@ requireComponent.keys().forEach(fileName => {
   Vue.component(componentName, componentConfig.default || componentConfig);
 });
 
-Vue.use(Axios);
-
+Vue.use(Vuelidate);
 new Vue({
   router,
   store,
