@@ -6,6 +6,7 @@ import router from "./router";
 import store from "./store/store";
 import "nprogress/nprogress.css";
 import Vuelidate from "vuelidate";
+import { DateFilter } from "./filters/date";
 
 Vue.config.productionTip = false;
 
@@ -26,6 +27,7 @@ requireComponent.keys().forEach(fileName => {
 });
 
 Vue.use(Vuelidate);
+Vue.filter("date", DateFilter);
 new Vue({
   router,
   store,
